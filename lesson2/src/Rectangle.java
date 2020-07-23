@@ -1,44 +1,76 @@
 public class Rectangle extends Figure {
 
-    private Point A;
-    private Point B;
-    private Point C;
+    private Point a;
+    private Point b;
+    private Point c;
+    private Point d;
 
-    private  double length;
-    private  double width;
-
-
-    public Rectangle(Point A, Point B, Point C) {
-        this.A = A;
-        this.B = B;
-        this.C = C;
+    public Rectangle(Point a, Point b, Point c, Point d) {
+        super();
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
     }
 
-    public void calculate()
-    {
-        length = Math.sqrt((A.getX() - B.getX()) * (A.getX() - B.getX()) + (A.getY() - B.getY()) * (A.getY() - B.getY()));
-        width = Math.sqrt((B.getX() - C.getX()) * (B.getX() - C.getX()) + (B.getY() - C.getY()) * (B.getY() - C.getY()));
-        System.out.println("Прямоугольник: а= " +length + " b=" +width);
+    public Rectangle() {
+        super();
     }
 
     @Override
     public double getPerimeter() {
-        return (length+width)*2;
+        return a.getLength(b) + b.getLength(c) + c.getLength(d) + d.getLength(a);
     }
 
     @Override
     public double getArea() {
-        return length*width;
+        Triangle triangleOne = new Triangle(a, b, c);
+        Triangle triangleTwo = new Triangle(a, d, c);
+        return triangleOne.getArea() + triangleTwo.getArea();
+    }
+
+
+    public Point getA() {
+        return a;
+    }
+
+    public void setA(Point a) {
+        this.a = a;
+    }
+
+    public Point getB() {
+        return b;
+    }
+
+    public void setB(Point b) {
+        this.b = b;
+    }
+
+    public Point getC() {
+        return c;
+    }
+
+    public void setC(Point c) {
+        this.c = c;
+    }
+
+    public Point getD() {
+        return d;
+    }
+
+    public void setD(Point d) {
+        this.d = d;
     }
 
     @Override
     public String toString() {
         return "Rectangle{" +
-                "A=" + A +
-                ", B=" + B +
-                ", C=" + C +
-                ", length=" + length +
-                ", width=" + width +
+                "a =" + a +
+                ", b =" + b +
+                ", c =" + c +
+                ", d =" + d +
+                ", Периметр =" + getPerimeter() +
+                ", Площадь =" + getArea() +
                 '}';
     }
 }

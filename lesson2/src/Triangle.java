@@ -1,55 +1,75 @@
 public class Triangle extends Figure {
 
-    private Point A;
-    private Point B;
-    private Point C;
-    private double a;
-    private double b;
-    private double c;
-    private double p;//полупериметр
-    private double S;//площадь
+    private Point a;
+    private Point b;
+    private Point c;
 
-    public Triangle(Point A, Point B, Point C) {
-        this.A = A;
-        this.B = B;
-        this.C = C;
+
+    public Triangle(Point a, Point b, Point c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
     }
 
-    public void calculate() {
-        a = Math.sqrt((A.getX() - B.getX()) * (A.getX() - B.getX()) + (A.getY() - B.getY()) * (A.getY() - B.getY()));
-        b = Math.sqrt((A.getX() - C.getX()) * (A.getX() - C.getX()) + (A.getY() - C.getY()) * (A.getY() - C.getY()));
-        c = Math.sqrt((B.getX() - C.getX()) * (B.getX() - C.getX()) + (B.getY() - C.getY()) * (B.getY() - C.getY()));
-        System.out.println("Треугольник: а= " +a + " b= " +b + " c= " +c);
-
-        if (a + b <= c || a + c <= b || a + c <= b)
-            System.out.println("Такого треугольника не существует");
-        else {
-            p = (a + b + c) / 2.0;
-            S = Math.sqrt(p * (p - a) * (p - b) * (p - c));
-        }
-    }
-
-    @Override
-    public double getPerimeter() {
-        return p*2;
+    public Triangle() {
+        super();
     }
 
     @Override
     public double getArea() {
-        return S;
+
+        double a1 = a.getLength(b);
+        double b1 = b.getLength(c);
+        double c1 = c.getLength(a);
+        System.out.println("Треугольник: а= " + a1 + " b= " + b1 + " c= " + c1);
+
+        if (a1 + b1 <= c1 || a1 + c1 <= b1 || a1 + c1 <= b1)
+            System.out.println("Такого треугольника не существует");
+        else {
+            double p = getPerimeter() / 2.0;
+            return Math.sqrt(p * (p - a1) * (p - b1) * (p - c1));
+        }
+        return -1;
+    }
+
+    @Override
+    public double getPerimeter() {
+
+        return a.getLength(b) + b.getLength(c) + c.getLength(a);
+    }
+
+    public Point getA() {
+        return a;
+    }
+
+    public void setA(Point a) {
+        this.a = a;
+    }
+
+    public Point getB() {
+        return b;
+    }
+
+    public void setB(Point b) {
+        this.b = b;
+    }
+
+    public Point getC() {
+        return c;
+    }
+
+    public void setC(Point c) {
+        this.c = c;
     }
 
     @Override
     public String toString() {
         return "Triangle{" +
-                "A=" + A +
-                ", B=" + B +
-                ", C=" + C +
                 ", a=" + a +
                 ", b=" + b +
                 ", c=" + c +
-                ", p=" + p +
-                ", S=" + S +
+                ", Периметр =" + getPerimeter() +
+                ", Площадь =" + getArea() +
                 '}';
     }
 }

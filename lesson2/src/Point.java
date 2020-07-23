@@ -8,6 +8,16 @@ public class Point {
         this.y = y;
     }
 
+    public Point() {
+        super();
+    }
+
+    public double getLength(Point point) {
+        double x = (this.getX() - point.getX()) * (this.getX() - point.getX());
+        double y = (this.getY() - point.getY()) * (this.getY() - point.getY());
+        return Math.sqrt(x + y);
+    }
+
     public double getX() {
         return x;
     }
