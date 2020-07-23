@@ -16,5 +16,11 @@ public class Main {
         System.out.println("Площадь прямоугольника: " + rectangleOne.getArea());
         System.out.println("Периметр прямоугольника: " + rectangleOne.getPerimeter());
         System.out.println(rectangleOne);
+
+        Scene sceneOne = new Scene();
+        sceneOne.add(triangleOne,0);
+        sceneOne.add(rectangleOne,2);
+        sceneOne.deleteByIndex(1);
+        System.out.println(sceneOne);
     }
 }
