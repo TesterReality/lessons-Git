@@ -1,6 +1,4 @@
 # idea folders
 */.idea/
 */out/
-/lesson1/lesson1.iml
-/lesson2/lesson2.iml
-/lesson3/lesson3.iml
+*/*.iml
